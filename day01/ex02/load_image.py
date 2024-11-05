@@ -19,12 +19,3 @@ def ft_load(path: str) -> list:
 	print(array)
 	im.close()
 	return array
-
-
-
-def main():
-	ft_load("./animal.jpeg")
-
-
-if __name__ == '__main__':
-	main()

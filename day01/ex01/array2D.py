@@ -1,14 +1,14 @@
+import numpy as np
+
+
 def slice_me(family: list, start: int, end: int) -> list:
 	try:
-		model_len = len(family[0])
-		for n in family:
-			if model_len != len(n):
-				raise ValueError("bad arguments")
+		np_array = np.array(family)
 	except ValueError as e:
 		print(f"Assertion error {e}")
-		return
-	print(f"My shape is ({len(family)}, {model_len})")
-	new_list = family[start:end]
-	print(f"My new shape is ({len(new_list)}, {len(new_list[0])})")
-	return new_list
+		return []
+	print(f"My shape is {np_array.shape}")
+	np_array = np_array[start:end]
+	print(f"My new shape is {np_array.shape}")
+	return np_array.tolist()
 	
