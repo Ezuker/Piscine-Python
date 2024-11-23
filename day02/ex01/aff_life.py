@@ -1,21 +1,16 @@
 import matplotlib.pyplot as plt
-# import seaborn as sb
 from load_csv import load
 import pandas as pd
 
 def display(csv : pd.DataFrame) -> None:
-	country_data = csv[csv['country'] == 'France'].drop(columns=['country']).T
-	country_data.columns = ['Life expectancy']
-	country_data['Year'] = country_data.index.astype(int)
-
-	years = country_data['Year']
-	life_expectancy = country_data['Life expectancy']
-
 	fig, ax = plt.subplots()
-	plt.title("France Life expectancy Projections")
-	ax.set_xlabel("Year")
+	france_data = csv.loc[csv['country'] == 'France']
+	france_data = france_data.drop("country", axis="columns")
+	france_data = france_data.T
+	france_data.plot(ax=ax, legend=False)
+	ax.set_title("France Life expectancy Projections")
 	ax.set_ylabel("Life expectancy")
-	ax.step(years, life_expectancy, where='mid')
+	ax.set_xlabel("Year")
 	plt.show()
 
 def main():
