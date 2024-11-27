@@ -1,5 +1,5 @@
-import sys
-import string
+from sys import argv, exit, stdin
+from string import punctuation
 
 
 def no_arg_management():
@@ -8,7 +8,7 @@ def no_arg_management():
 	Returns:
 	str: The line read from standard input.
 	"""
-	for line in sys.stdin:
+	for line in stdin:
 		return line
 
 
@@ -16,17 +16,17 @@ def main():
 	"""
 	Main function
 	"""
-	if len(sys.argv) > 2:
+	if len(argv) > 2:
 		print("AssertionError: provide a single argument")
-		sys.exit(1)
-	if len(sys.argv) == 2:
-		text = sys.argv[1]
+		exit(1)
+	if len(argv) == 2:
+		text = argv[1]
 	else:
 		text = no_arg_management()
 	print(f"The text contains {len(text)} characters")
 	print(sum(1 for c in text if c.isupper()), "upper letters")
 	print(sum(1 for c in text if c.islower()), "lower letters")
-	print(sum(1 for c in text if c in string.punctuation), "punctuation marks")
+	print(sum(1 for c in text if c in punctuation), "punctuation marks")
 	print(sum(1 for c in text if c.isspace()), "spaces")
 	print(sum(1 for c in text if c.isdigit()), "digits")
 

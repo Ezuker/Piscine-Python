@@ -1,8 +1,7 @@
-import datetime
-import time 
+from time import time, strftime 
 
-date = time.strftime("%b %d %Y")
-time_seconds = time.time()
+date = strftime("%b %d %Y")
+time_seconds = time()
 formatted_time = f"{time_seconds:,.3f}"
 scientific_nota = f"{time_seconds:.2E}"
 

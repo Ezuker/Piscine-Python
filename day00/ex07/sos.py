@@ -1,5 +1,4 @@
-import sys
-import re
+from sys import argv
 
 
 def to_morse_code(text, NESTED_MORSE):
@@ -16,10 +15,10 @@ def to_morse_code(text, NESTED_MORSE):
 
 
 def main():
-	if len(sys.argv) != 2:
+	if len(argv) != 2:
 		print("AssertionError: the arguments are bad")
 		return
-	text = sys.argv[1]
+	text = argv[1]
 	NESTED_MORSE = {
 		" ": "/ ",
 		"A": ".- ", "a": ".- ",

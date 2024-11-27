@@ -11,7 +11,6 @@ ft_tuple = (u, v)
 
 ft_set.remove('tutu!')
 ft_set.add("Angouleme")
-ft_set = sorted(ft_set, reverse=True) #maybe forbidden
 
 ft_dict['Hello'] = "42Angouleme"
 

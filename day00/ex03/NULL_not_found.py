@@ -1,4 +1,4 @@
-import math
+from math import isnan
 
 def print_obj(object_type, object) -> int:
 	print(object_type, type(object))
@@ -16,7 +16,7 @@ def NULL_not_found(object: any) -> int:
 	if object_type is not None:
 		if type(object).__name__ == 'int' and object == 0:
 			return print_obj(object_type, object)
-		if type(object).__name__ == 'float' and math.isnan(object):
+		if type(object).__name__ == 'float' and isnan(object):
 			return print_obj(object_type, object)
 		if type(object).__name__ == 'str' and object == "":
 			return print_obj(object_type, object)

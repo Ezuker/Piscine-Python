@@ -1,20 +1,20 @@
-import sys
-import string
+from sys import argv
+from string import printable, punctuation
 from ft_filter import ft_filter
 
 
 def main():
 	try:
-		text = str(sys.argv[1])
-		number = int(sys.argv[2])
+		text = str(argv[1])
+		number = int(argv[2])
 	except IndexError:
 		print("AssertionError: the arguments are bad")
 	except ValueError:
 		print("AssertionError: the arguments are bad")
-	if sum(1 for c in text if c in string.punctuation) >= 1:
+	if sum(1 for c in text if c in punctuation) >= 1:
 		print("AssertionError: the arguments are bad")
 		return
-	if sum(1 for c in text if c in string.printable) != len(text):
+	if sum(1 for c in text if c in printable) != len(text):
 		print("AssertionError: the arguments are bad")
 		return
 	first_list = text.split()
