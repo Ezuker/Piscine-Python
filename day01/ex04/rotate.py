@@ -1,9 +1,17 @@
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
 import numpy as np
 from load_image import ft_load
 import matplotlib.pyplot as plt
 
 def ft_zoom(im: Image) -> list:
+	"""Zoom into the image and show it with matplotlib
+
+	Args:
+		im (Image): Image to be zoomed in
+
+	Returns:
+		list: Return a list of the RGB (R) format reshaped 
+	"""
 	im_array = np.array(im)
 	print(im_array.shape)
 	im_array = im_array[100:500, 450:850, 0:1]
@@ -16,6 +24,11 @@ def ft_zoom(im: Image) -> list:
 
 
 def ft_transpose(im: list) -> None:
+	"""Transpose the matrice and show the image rotated
+
+	Args:
+		im (list): The RGB (R) format list of the image
+	"""
 	new_im = [[im[n][i] for n in range(len(im))] for i in range(len(im[0]))]
 	# Same as
 	# new_im = [[0 for _ in range(len(im))] for _ in range(len(im[0]))]
@@ -29,15 +42,20 @@ def ft_transpose(im: list) -> None:
 
 
 def main():
+	"""Basic main function
+	"""
 	try:
 		im = ft_load("animal.jpeg")
 		np_array = ft_zoom(im)
 		ft_transpose(np_array)
-	except FileNotFoundError:
+	except TypeError as e:
+		print(f"Image Error: {e}")
 		return
-	except ValueError:
+	except FileNotFoundError as e:
+		print(f"Image Error: {e}")
 		return
-	except TypeError:
+	except AssertionError as e:
+		print(f"Image Error {e}")
 		return
 
 if __name__ == '__main__':

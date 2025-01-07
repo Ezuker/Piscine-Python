@@ -1,9 +1,15 @@
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
 import numpy as np
 from load_image import ft_load
 import matplotlib.pyplot as plt
 
+
 def ft_zoom(im: Image) -> None:
+	"""Zoom into the image and show it with matplotlib
+
+	Args:
+		im (Image): Image to be zoomed in
+	"""
 	im_array = np.array(im)
 	print(im_array.shape)
 	im_array = im_array[100:500, 450:850, 0:1]
@@ -19,14 +25,19 @@ def ft_zoom(im: Image) -> None:
 
 
 def main():
+	"""Basic main function
+	"""
 	try:
 		im = ft_load("animal.jpeg")
 		ft_zoom(im)
-	except FileNotFoundError:
+	except TypeError as e:
+		print(f"Image Error: {e}")
 		return
-	except TypeError:
+	except FileNotFoundError as e:
+		print(f"Image Error: {e}")
 		return
-	except Exception:
+	except AssertionError as e:
+		print(f"Image Error {e}")
 		return
 
 if __name__ == '__main__':
