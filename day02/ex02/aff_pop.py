@@ -5,6 +5,15 @@ from load_csv import load
 
 
 def convert(x):
+    """Convert string to int
+    eg: 24.2M -> 24 200 000
+
+    Args:
+        x (string): string to be converted
+
+    Returns:
+        int: The result in int format
+    """
     tens = {'k': 1e3, 'm': 1e6, 'b': 1e9, 'K': 1e3, 'M': 1e6, 'B': 1e9}
     def f(x): return int(float(x[:-1]) * tens[x[-1]])
     x = f(x)
@@ -29,6 +38,11 @@ def format_func(x, p):
 
 
 def display(csv: pd.DataFrame):
+    """Function that compare two life expectancy countries
+
+    Args:
+        csv (pd.DataFrame): Csv File
+    """
     fig, ax = plt.subplots()
     france_data = csv.loc[csv['country'] == 'France']
     saudi_data = csv.loc[csv['country'] == 'Saudi Arabia']
@@ -58,11 +72,23 @@ def display(csv: pd.DataFrame):
 
 
 def main():
+    """Basic main function
+    """
     try:
         csv = load("population_total.csv")
-    except FileNotFoundError:
+        assert isinstance(csv, pd.DataFrame)
+    except AssertionError:
         return
-    display(csv)
+    try:
+        display(csv)
+    except KeyError as e:
+        print(f"KeyError Error occured {e}")
+    except KeyboardInterrupt as e:
+        print(f"Keyboard close the graph {e}")
+    except TypeError as e:
+        print(e)
+    except IndexError as e:
+        print(e)
 
 
 if __name__ == '__main__':
