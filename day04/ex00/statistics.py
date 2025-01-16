@@ -2,7 +2,7 @@ from math import sqrt
 
 
 def ft_statistics(*args: any, **kwargs: any) -> None:
-    for item, value in kwargs.items():
+    for _, value in kwargs.items():
         if len(args) != 0:
             match value:
                 case "mean":
@@ -23,6 +23,5 @@ def ft_statistics(*args: any, **kwargs: any) -> None:
                     mean = sum(args) / len(args)
                     lst = [pow((x - mean), 2) for x in args]
                     print(f"variance: {sum(lst) / len(args)}")
-                    pass
         else:
             print("ERROR")
